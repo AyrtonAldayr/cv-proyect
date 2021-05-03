@@ -1,0 +1,3 @@
+USE sys;
+DROP DATABASE IF EXISTS ResumeCreator;
+CREATE DATABASE ResumeCreator;
