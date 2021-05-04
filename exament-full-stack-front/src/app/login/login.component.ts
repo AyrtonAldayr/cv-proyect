@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ServiceApiService } from '../service-api.service';
 
 @Component({
@@ -8,7 +9,9 @@ import { ServiceApiService } from '../service-api.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private _serviceApiService:ServiceApiService) { }
+  constructor(private _serviceApiService:ServiceApiService,
+    private router:Router,
+    ) { }
 
   ngOnInit(): void {
   }

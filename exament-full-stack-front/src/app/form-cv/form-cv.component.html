@@ -1,0 +1,106 @@
+<form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>Información Personal</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Primer Nombre" formControlName="firstName">
+            <mat-error *ngIf="addressForm.controls['firstName'].hasError('required')">
+              Primer nombre es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Segundo Nombre" formControlName="secondName">
+            <mat-error *ngIf="addressForm.controls['secondName'].hasError('required')">
+              Segundo nombre es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col" *ngIf="hasOtherNames">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Otros Nombres" formControlName="otherNames">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row" *ngIf="!hasOtherNames">
+        <div class="col">
+          <button mat-button type="button" (click)="hasOtherNames = !hasOtherNames">
+            + Parte del nombre compuesto
+          </button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Apellido Paterno" formControlName="paternalSurname">
+            <mat-error *ngIf="addressForm.controls['paternalSurname'].hasError('required')">
+              Apellido paterno es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Apellido Materno" formControlName="maternalSurname">
+            <mat-error *ngIf="addressForm.controls['maternalSurname'].hasError('required')">
+              Apellido materno es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-select placeholder="Tipo Documento" formControlName="typeDocument">
+              <mat-option *ngFor="let typeDocument of typeDocuments" [value]="typeDocument.abbreviation">
+                {{ typeDocument.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="addressForm.controls['typeDocument'].hasError('required')">
+              Tipo de documento es <strong>obligatorio</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Número de Documento" formControlName="numberDocument" maxlength="8">
+            <mat-error *ngIf="addressForm.controls['numberDocument'].hasError('required')">
+              Número de documento es<strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Número de telefono" formControlName="numberPhone" maxlength="9">
+            <mat-error *ngIf="addressForm.controls['numberPhone'].hasError('required')">
+              Número de celular es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Correo electronico" formControlName="email">
+            <mat-error *ngIf="addressForm.controls['email'].hasError('required')">
+              Correo electronico es <strong>requerido</strong>
+            </mat-error>
+            <mat-error *ngIf="addressForm.controls['email'].hasError('email')">
+              <strong>Formato incorrecto</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit" [disabled]="addressForm.invalid">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

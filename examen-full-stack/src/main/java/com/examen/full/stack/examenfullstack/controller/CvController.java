@@ -19,6 +19,7 @@ public class CvController {
     @Autowired
     CvService cvService;
 
+    @CrossOrigin(value = "*")
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> createPersonCv(
             @RequestBody PersonCvRequest personCvRequest
@@ -27,6 +28,7 @@ public class CvController {
         return new ResponseEntity<>("", CREATED);
     }
 
+    @CrossOrigin(value = "*")
     @GetMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE,value = "/{document}")
     public ResponseEntity<InformationResponse> getInformationPerson(
             @PathVariable("document") String document
