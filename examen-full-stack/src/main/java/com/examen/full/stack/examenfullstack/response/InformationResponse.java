@@ -1,10 +1,15 @@
 package com.examen.full.stack.examenfullstack.response;
 
+import java.util.List;
+
 import com.examen.full.stack.examenfullstack.entity.Experience;
 import com.examen.full.stack.examenfullstack.entity.Studied;
-import lombok.*;
 
-import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
